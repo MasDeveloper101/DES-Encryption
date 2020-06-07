@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home/Encrypt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-    <form method="POST">
-        {{ encrypt_form.hidden_tag() }}
-        {{ encrypt_form.key.label }} {{ encrypt_form.key() }}
-        <br>
-        Enter a <strong>message: </strong>
-        <br>
-        {{ encrypt_form.decoded_message() }}
-        <br>
-        {{ encrypt_form.submit() }}
-    </form>
+    <div class="jumbotron">
+        <h1>Encryption</h1>
+        <form method="POST">
+            {{ encrypt_form.hidden_tag() }}
+            Enter a <strong>key: </strong> <br> {{ encrypt_form.key(rows="10", cols="100") }}
+            <br>
+            Enter a <strong>message: </strong>
+            <br>
+            {{ encrypt_form.decoded_message(rows="10", cols="100") }}
+            <br>
+            {{ encrypt_form.submit() }}
+        </form>
+    </div>
 </body>
 </html>

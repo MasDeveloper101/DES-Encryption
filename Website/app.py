@@ -17,15 +17,15 @@ app.config["SECRET_KEY"] = 'DEVA-VADA-31419DE-97315934153579' # Configuration ke
 
 class EncryptForm(FlaskForm):
 
-    key = TextAreaField('Enter a key:', validators=[DataRequired()])
-    decoded_message = TextAreaField(validators=[DataRequired])
+    key = TextAreaField('Enter a key:')
+    decoded_message = TextAreaField()
     submit = SubmitField('Submit')
 
 class DecryptForm(FlaskForm):
 
-    key = TextAreaField('Enter a key:', validators=[DataRequired()])
-    encoded_message = TextAreaField(validators=[DataRequired])
-    submit = SubmitField('Submit', validators=[DataRequired()])
+    key = TextAreaField('Enter a key:')
+    encoded_message = TextAreaField()
+    submit = SubmitField('Submit')
 
 # DES PROGRAM FUNCTIONS
 
@@ -51,8 +51,8 @@ def encrypt():
         session['decoded_message'] = encrypt_form.decoded_message.data
 
         # DES ENCRYPTION LOGIC
-        des = DES.new(session['key'], DES.MODE_ECB)
-        session['decoded_message'] = pad(session['decoded_message'])
+        des = DES.new(session['key'], DES.MODE_ECB) # NEW DES OBJECT
+        session['decoded_message'] = pad(session['decoded_message']) # PADDING MESSAGE
         session['decoded_message'] = des.encrypt(session['decoded_message'])
 
         return redirect(url_for('en_results')) # ONLY HAPPEND WHEN SUBMISSION
