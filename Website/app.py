@@ -11,7 +11,7 @@ from Crypto.Cipher import DES
 
 app = Flask(__name__) # Create out Flask application
 
-app.config["SECRET_KEY"] = 'DEVA-VADA-31419DE-97315934153579' # Configuration key for CSRF security
+app.config["SECRET_KEY"] = '' # Configuration key for CSRF security
 
 # FORMS
 
